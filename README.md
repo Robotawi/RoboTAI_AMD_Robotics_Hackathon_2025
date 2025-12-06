@@ -19,11 +19,13 @@ This repository contains our work for the AMD Robotics Hackathon 2025.
 
 '
 
-Mission 1 Video of Performance
+**Mission 1 Video of Performance:**
 
 
+<div align="center">
+  <img src="assets/mission1.gif" alt="description"/>
+</div>
 
-[Todo: Add video here]
 
 This task helped us familiarize with the LeRobot software stack and hardware (so-101 follower/leader) arm system. We have also tried to get this task done quickly to get insights into the whole stack of model training and inference. All the related requirements are included under the `mission1` directory. 
 
