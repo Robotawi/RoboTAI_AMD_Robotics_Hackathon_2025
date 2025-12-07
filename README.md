@@ -1,5 +1,6 @@
 # AMD Robotics Hackathon 2025: Drawer Opener with Object Placement
 
+**Note:** Videos may take a moment to load. Please allow time for buffering.
 
 **Team: 41** (RoboTAI) - Abdelrahman Abubakr and Mohamed Raessa
 
