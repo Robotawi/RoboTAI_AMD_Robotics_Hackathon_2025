@@ -10,16 +10,9 @@
 
 This repository contains our work for the AMD Robotics Hackathon 2025.
 
-- **Mission 1:** We used the unified official task to complete a block pick and place task.
+## Mission 1
 
-- **Mission 2:** We used the **so101 follower/leader arm** teleoperation data with three-cameras to collect data for the task **“[Todo: name the task]”** training dataset. 
-  - We trained a policy on this dataset using LeRobot.
-  - Then, we ran **inference** with the trained policy to **evaluate the performance** using the same hardware setup.
-  - All training metadata and hyperparameters are captured in the **wandb latest-run directory** as required.
-
-'
-
-**Mission 1 Video of Performance:**
+We used the unified official task to complete a block pick and place task. The following videos shows the robot performance during mission 1.
 
 
 <div align="center">
@@ -29,20 +22,24 @@ This repository contains our work for the AMD Robotics Hackathon 2025.
 
 This task helped us familiarize with the LeRobot software stack and hardware (so-101 follower/leader) arm system. We have also tried to get this task done quickly to get insights into the whole stack of model training and inference. All the related requirements are included under the `mission1` directory. 
 
-## Mission 1 Delivery URL
+#### Mission 1 Delivery URLs
 
 The following are our Hugging Face repo names:
 
-- **Dataset URL**:
-  - Training dataset:
-    - `https://huggingface.co/datasets/abd64bit/record-red-block-test/tree/main`
+- **Dataset URL**: [https://huggingface.co/datasets/abd64bit/record-red-block-test](https://huggingface.co/datasets/abd64bit/record-red-block-test)
 
-- **Model URL**:
-    - `https://huggingface.co/abd64bit/act_so101_redblock/tree/main`
+- **Model URL**: [https://huggingface.co/abd64bit/act_so101_redblock](https://huggingface.co/abd64bit/act_so101_redblock)
 
-___
 
-Mission 2 Video of Performance
+## Mission 2
+
+We used the **so101 follower/leader arm** teleoperation data with three-cameras to collect data for the task **“[Todo: name the task]”** training dataset. 
+  - We trained a policy on this dataset using LeRobot.
+  - Then, we ran **inference** with the trained policy to **evaluate the performance** using the same hardware setup.
+  - All training metadata and hyperparameters are captured in the **wandb latest-run directory** as required.
+
+'
+## Mission 2 Video of Performance
 
 [Todo: Add video here]
 
