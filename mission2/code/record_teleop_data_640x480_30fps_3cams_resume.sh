@@ -41,4 +41,4 @@ lerobot-record \
   --dataset.push_to_hub=False \
   --dataset.episode_time_s=30 \
   --dataset.reset_time_s=1 \
-  --resume=False
+  --resume=True
