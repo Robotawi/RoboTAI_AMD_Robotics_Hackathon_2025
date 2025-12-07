@@ -210,37 +210,9 @@ v4l2-ctl -d /dev/video6 --list-formats-ext # for video6
 Clone this repository and move into it:
 
 ```
-git clone <YOUR_REPO_URL>.git
-cd AMD_Robotics_Hackathon_2025_[Project Name]
+git clone https://github.com/Robotawi/RoboTAI_AMD_Robotics_Hackathon_2025.git
+cd AMD_Robotics_Hackathon_2025
 ```
-
-Directory structure (template):
-
-```
-AMD_Robotics_Hackathon_2025_[Project Name]/
-├── README.md
-├── mission1
-│   ├── code
-│   │   ├── calib_follower.sh
-│   │   ├── calib_leader.sh
-│   │   ├── fix_arms_access_permission.sh
-│   │   ├── login_huggingface.sh
-│   │   ├── record_teleop_data_640x480_30fps_3cams.sh
-│   │   └── inference_teleop_640x480_30fps_3cams.sh
-│   └── wandb
-│       └── <latest run directory copied from wandb of your Mission 1 training job>
-└── mission2
-    ├── code
-    │   ├── calib_follower.sh
-    │   ├── calib_leader.sh
-    │   ├── fix_arms_access_permission.sh
-    │   ├── login_huggingface.sh
-    │   ├── record_teleop_data_640x480_30fps_3cams.sh
-    │   └── inference_teleop_640x480_30fps_3cams.sh
-    └── wandb
-        └── <latest run directory copied from wandb of your Mission 2 training job>
-```
-
 
 ### 2. Hugging Face Authentication
 
@@ -442,7 +414,7 @@ Key points:
 
 - Uses 3 cameras (same indices as training, unless modified).
 - Uses a fixed evaluation dataset name: `eval_drawer-opener-so101-v1`.
-- Uses a model at `POLICY_PATH="${HF_USER}/act_drawer-opener-so101-v1"`. [Todo: update this]
+- Uses a model at `POLICY_PATH="${HF_USER}/drawer-opener-act-so101"`.
 
 Script content:
 
@@ -495,7 +467,7 @@ Run:
 
 This will:
 
-- Run inference using the policy hosted at `https://huggingface.co/${HF_USER}/act_drawer-opener-so101-v1`
+- Run inference using the policy hosted at `https://huggingface.co/${HF_USER}/drawer-opener-act-so101`
 - Record evaluation data into the dataset: `https://huggingface.co/datasets/${HF_USER}/eval_drawer-opener-so101-v1`
 
 ---
