@@ -63,6 +63,7 @@ With years of experience building classical algorithmic systems for manipulation
   - Smooth trajectories (minimal kinematic strain).
   - Natural hand-object interaction for grasping.
   - Relatively simple data collection with fewer failed demonstrations.
+- Drawer closing is achieved by pushing using **the side of the gripper, not the tip,** providing a more stable contact surface and improving robustness when closing the drawer under perception and kinematics uncertainties.
 - **3-camera synchronized multi-view dataset**:
   - **Gripper view**: fine manipulation + grasp interaction
   - **Top view**: drawer motion + global workspace state
