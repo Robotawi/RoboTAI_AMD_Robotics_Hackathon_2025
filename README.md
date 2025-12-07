@@ -32,25 +32,131 @@ The following are our Hugging Face repo names:
 
 ## Mission 2
 
-We used the **so101 follower/leader arm** teleoperation data with three-cameras to collect data for the task **“[Todo: name the task]”** training dataset. 
-  - We trained a policy on this dataset using LeRobot.
-  - Then, we ran **inference** with the trained policy to **evaluate the performance** using the same hardware setup.
-  - All training metadata and hyperparameters are captured in the **wandb latest-run directory** as required.
 
-'
-## Mission 2 Video of Performance
+This project solves a practical and challenging real-world manipulation task:  
+**Autonomously opening a drawer, picking an object, placing it inside a drawer, and closing the drawer**
 
-[Todo: Add video here]
+This requires precise control of articulated objects and robust sequencing of multiple sub-tasks with sensor-based feedback.
 
-The provided shell scripts under `mission2/code` focus on:
+We collected multi-view teleoperation data using the SO-101 system and trained an ACT (Action Chunking with Transformers) policy via LeRobot.
 
-- Making hardware setup fast and reproducible (permissions, calibration).
-- Standardizing data collection for Hugging Face datasets.
-- Running inference with a three-camera setup for evaluation.
 
-You can reproduce our data collection and inference runs by following the steps below.
+## Submission Details
+
+### 1. Mission Description
+
+Real-world motivation: Drawer manipulation combined with object pick and place is commonly required in assistive robots, household robots, and storage automation — yet difficult due to combined **manipulation + grasping + spatial awareness** requirements.
+
+Our robot autonomously completes the full pipeline:
+
+1. Reach & grasp drawer handle.
+2. Open the drawer.
+3. Pick an object (fluffy duck toy).  
+4. Place it inside drawer.
+5. Close the drawer.
+
+With years of experience building classical algorithmic systems for manipulation and grasping, this project represents a meaningful shift toward learning-based approaches.
+
+### 2. Creativity
+
+- We teleoperated the SO-101 robot **in its highest manipulability regions**, producing:
+  - Smooth trajectories (minimal kinematic strain).
+  - Natural hand-object interaction for grasping.
+  - Relatively simple data collection with fewer failed demonstrations.
+- **3-camera synchronized multi-view dataset**:
+  - **Gripper view**: fine manipulation + grasp interaction
+  - **Top view**: drawer motion + global workspace state
+  - **Side view**: depth perspective + collision safety
+- **Disturbance-Resilient Performance**  
+  The learned model is **phase-aware**.  
+  If interrupted, for example: drawer reopened after object placement, it autonomously recognizes the state and closes the drawer.
+  
+-   We selected the ACT model because it directly learns  
+  multi-stage behavior and dynamic recovery from real data
+
+
+### 3. Technical implementations
+
+#### **Teleoperation / Dataset capture**
+
+  - Robot: SO-101 follower/leader arm  
+  - Cameras: 3× USB, color, **640×480 @ 30 FPS**  
+
+  - [Todo:Insert teleoperation video]
+
+Scripts included in `mission2/code`:
+- `fix_arms_access_permission.sh`
+- `calib_follower.sh`
+- `calib_leader.sh`
+- `record_teleop_data_640x480_30fps_3cams.sh`
+
+
+#### **Training**
+
+
+- Policy: **ACT (Action Chunking with Transformers)** from LeRobot
+
+- Inputs: Multi-view image streams + robot joint values
+
+  - [Todo:Insert teleoperation video]
+
+####  *Inference and Evaluation*
+
+- Same real-world hardware setup.
+- Fully autonomous execution after start signal.
+- Recovers from disturbances and ambiguous drawer states.
+
+
+#### 1. Successful Full-Task Execution
+'''Insert video 1'''
+
+The robot completes open → pick → place → close reliably across multiple trials.
 
 ---
+
+#### 2. Robust Phase Recovery 
+'''Insert video 2'''
+
+If the drawer is disturbed after closing, the robot detects correct stage and resumes closing.
+
+---
+
+#### 3️3. Generalization to Lighting Conditions
+'''Insert video 3'''
+
+Performance remains stable when switching to dim lighting conditions.
+
+---
+
+#### 4. Failure Handling & Retry Behavior
+'''Insert video 4'''
+
+If the initial open attempt fails, the robot readjusts and retries until the sub-task is complete.
+
+
+
+## Ease of Use
+
+- **Generalizable** to other objects if trained on them.
+- **Flexible** dataset format (LeRobot standard)
+- Easy execution:
+  - Data collection: `./record_*.sh <dataset-name>`
+  - Training: single LeRobot notebook also included.
+  - Inference: `./inference_*.sh`
+
+Supports future:
+- Multi-drawer tasks  
+- Multi-object placement  
+- Adaptation to home or warehouse settings
+
+## Mission 2 Delivery URLs
+
+The following are our Hugging Face repo names:
+
+- **Dataset URL**: [https://huggingface.co/datasets/abd64bit/drawer-opener-so101-v1](https://huggingface.co/datasets/abd64bit/drawer-opener-so101-v1)
+
+- **Model URL**: [https://huggingface.co/abd64bit/drawer-opener-act-so101](https://huggingface.co/abd64bit/drawer-opener-act-so101)
+
 
 ## How To Reproduce Our Work
 
