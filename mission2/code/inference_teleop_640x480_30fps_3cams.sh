@@ -11,28 +11,28 @@
 
 # Camera indices (update per machine)
 CAM_GRIPPER=6
-CAM_TOP=4
-CAM_SIDE=8
+CAM_TOP=8
+CAM_SIDE=4
 
-# Updated evaluation model + dataset name
-POLICY_PATH="${HF_USER}/act_so101_redblock"
-DATASET_REPO="${HF_USER}/eval_record-red-block-test"
+# Evaluation model + dataset name (update HF_USER before running)
+POLICY_PATH="${HF_USER}/drawer-opener-act-so101"
+DATASET_REPO="${HF_USER}/eval_act_drawer-opener-so101-v1"
 
 lerobot-record \
   --robot.type=so101_follower \
-  --robot.port=/dev/ttyACM1 \  # follower arm — update if ACM changes
+  --robot.port=/dev/ttyACM1 \
   --robot.id=follower_arm \
   --robot.cameras="{ gripper: {type: opencv, index_or_path: ${CAM_GRIPPER},  width: 640, height: 480, fps: 30}, \
                      top:     {type: opencv, index_or_path: ${CAM_TOP},      width: 640, height: 480, fps: 30}, \
                      side:    {type: opencv, index_or_path: ${CAM_SIDE},     width: 640, height: 480, fps: 30} }" \
   --teleop.type=so101_leader \
-  --teleop.port=/dev/ttyACM0 \  # leader arm — update if ACM changes
+  --teleop.port=/dev/ttyACM0 \
   --teleop.id=leader_arm \
   --display_data=true \
   --dataset.repo_id=${DATASET_REPO} \
   --dataset.num_episodes=5 \
-  --dataset.single_task="Evaluate grab the red block" \
+  --dataset.single_task="Evaluate opening the drawer" \
   --dataset.push_to_hub=False \
-  --dataset.episode_time_s=60 \
-  --dataset.reset_time_s=5 \
+  --dataset.episode_time_s=300 \
+  --dataset.reset_time_s=2 \
   --policy.path=${POLICY_PATH}
