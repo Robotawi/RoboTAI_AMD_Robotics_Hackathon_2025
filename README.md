@@ -1,7 +1,7 @@
 # AMD Robotics Hackathon 2025: Drawer Opener with Object Placement
 
 
-**Team:** (RoboTAI) - Abdelrahman Abubakr and Mohamed Raessa
+**Team: 41** (RoboTAI) - Abdelrahman Abubakr and Mohamed Raessa
 
 ---
 
@@ -77,20 +77,6 @@ With years of experience building classical algorithmic systems for manipulation
 
 ### 3. Technical implementations
 
-#### **Teleoperation / Dataset capture**
-
-  - Robot: SO-101 follower/leader arm  
-  - Cameras: 3× USB, color, **640×480 @ 30 FPS**  
-
-  - [Todo:Insert teleoperation video]
-
-Scripts included in `mission2/code`:
-- `fix_arms_access_permission.sh`
-- `calib_follower.sh`
-- `calib_leader.sh`
-- `record_teleop_data_640x480_30fps_3cams.sh`
-
-
 #### **Training**
 
 
@@ -98,7 +84,25 @@ Scripts included in `mission2/code`:
 
 - Inputs: Multi-view image streams + robot joint values
 
-  - [Todo:Insert teleoperation video]
+<div align="center">
+  <img src="assets/0_training_data_collection.gif" alt="description"/>
+</div>
+
+#### **Teleoperation / Dataset capture**
+
+  - Robot: SO-101 follower/leader arm  
+  - Cameras: 3× USB, color, **640×480 @ 30 FPS**  
+
+<div align="center">
+  <img src="assets/dataset-capture.jpg" alt="description"/>
+</div>
+
+Scripts included in `mission2/code`:
+- `fix_arms_access_permission.sh`
+- `calib_follower.sh`
+- `calib_leader.sh`
+- `record_teleop_data_640x480_30fps_3cams.sh`
+
 
 ####  *Inference and Evaluation*
 
@@ -108,31 +112,42 @@ Scripts included in `mission2/code`:
 
 
 #### 1. Successful Full-Task Execution
-'''Insert video 1'''
 
 The robot completes open → pick → place → close reliably across multiple trials.
+
+<div align="center">
+  <img src="assets/1_mession2_demo_2x.gif" alt="description"/>
+</div>
 
 ---
 
 #### 2. Robust Phase Recovery 
-'''Insert video 2'''
 
 If the drawer is disturbed after closing, the robot detects correct stage and resumes closing.
+
+<div align="center">
+  <img src="assets/2_middle_run_interruption_2x.gif" alt="description"/>
+</div>
 
 ---
 
 #### 3️3. Generalization to Lighting Conditions
-'''Insert video 3'''
 
 Performance remains stable when switching to dim lighting conditions.
+
+<div align="center">
+  <img src="assets/3_robustness_to_environment_change_2x.gif" alt="description"/>
+</div>
 
 ---
 
 #### 4. Failure Handling & Retry Behavior
-'''Insert video 4'''
 
 If the initial open attempt fails, the robot readjusts and retries until the sub-task is complete.
 
+<div align="center">
+  <img src="assets/4_runs_even_if_confused_2x.gif" alt="description"/>
+</div>
 
 
 ## Ease of Use
@@ -225,9 +240,6 @@ AMD_Robotics_Hackathon_2025_[Project Name]/
         └── <latest run directory copied from wandb of your Mission 2 training job>
 ```
 
-[Todo: add the wandb files]
-
----
 
 ### 2. Hugging Face Authentication
 
@@ -343,7 +355,8 @@ Key points:
 
 - Resolution: `640 x 480` at `30 fps` for all three cameras.
 - Requires a **dataset name argument**, which becomes the final Hugging Face dataset repo name `${HF_USER}/${DATASET_NAME}`.
-- Uses [Todo: decide] episodes with short episode and reset times, designed for efficient data collection.
+- Uses 8 episodes with short episode and reset times, designed for efficient data collection.
+- Collect 8 sets of episodes, adding up to a total 64 episodes in the training data.
 
 Script content:
 
@@ -412,7 +425,7 @@ Adjust `CAM_GRIPPER`, `CAM_TOP`, `CAM_SIDE` if your `/dev/video*`devices (camera
 Training is done using LeRobot’s training pipeline. It uses:
 
 - The dataset recorded in Step 5.
-- A configuration corresponding to the task and network (ACT or other policy architecture [Todo: update this]).
+- A configuration corresponding to the task and network (ACT policy).
 
 The configuration, logs, and summaries are stored in the **wandb/latest-run** directory.
 
@@ -486,16 +499,4 @@ This will:
 
 ---
 
-## Mission 2 Delivery URL [Todo: update this]
-
-The following are our Hugging Face repo names:
-
-- **Dataset URL**:
-  - Training dataset: [Todo: update the URL]
-    - `https://huggingface.co/datasets/${HF_USER}/record-duck-train-v1`
-
-- **Model URL**:
-  - Red block policy: [Todo: update the URL]
-    - `https://huggingface.co/${HF_USER}/act_so101_redblock`
-
-This README, together with the scripts and wandb directories, should provide all required information to understand, reproduce, and evaluate our Mission 2 work for the AMD Robotics Hackathon 2025.
+his README, together with the scripts and wandb directories, should provide all required information to understand, reproduce, and evaluate our Mission 2 work for the AMD Robotics Hackathon 2025.
