@@ -1,8 +1,7 @@
-# AMD_Robotics_Hackathon_2025_[Project Name]
+# AMD Robotics Hackathon 2025: Drawer Opener with Object Placement
 
-**Title:** AMD_Robotics_Hackathon_2025\-[Todo: Add mission2 task name]
 
-**Team:** RoboTAI: Abdelrahman and Mohamed
+**Team:** (RoboTAI) - Abdelrahman Abubakr and Mohamed Raessa
 
 ---
 
