@@ -8,7 +8,13 @@
 
 ## Summary
 
-This repository contains our work for the AMD Robotics Hackathon 2025.
+This repository contains our work for the **AMD Robotics Hackathon 2025**, structured into two missions with distinct goals:
+
+- **Mission 1** focuses on **familiarizing ourselves with the LeRobot framework and the SO-101 leader/follower arm system**, including dataset recording, training, and inference using an official baseline task.
+- **Mission 2** targets **the main hackathon challenge and evaluation**, where we design, train, and deploy a learning-based policy to solve a complex real-world manipulation task involving drawer interaction and object placement.
+
+Mission 1 was intentionally kept simple and fast to gain end-to-end understanding of the stack, while Mission 2 represents our primary technical contribution and competitive submission.
+
 
 ## Mission 1
 
